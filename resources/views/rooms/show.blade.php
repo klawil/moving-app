@@ -10,8 +10,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Box</th>
+                    <th>Label</th>
+                    <th>Description</th>
                     <th>Items</th>
                     <th></th>
                 </tr>
@@ -19,7 +19,7 @@
             <tbody>
                 @foreach($room->boxes as $box)
                     <tr>
-                        <td>{{ $box->room_box_number }}</td>
+                        <td>{{ $room->name . ' ' . $box->room_box_number }}</td>
                         <td>{{ $box->description }}</td>
                         <td>{{ $box->items->count() }}</td>
                         <td>
@@ -28,8 +28,7 @@
                     </tr>
                 @endforeach
                 <tr>
-                    <td></td>
-                    <td colspan="2">
+                    <td colspan="3">
                         <input type="text" class="form-control" name="description">
                     </td>
                     <td>
