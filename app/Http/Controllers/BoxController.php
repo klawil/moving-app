@@ -24,7 +24,10 @@ class BoxController extends Controller
     public function index(Request $request)
     {
         return view('boxes.index', [
-            'boxes' => Box::all(),
+            'boxes' => Box::all()
+                ->sortBy(function ($box) {
+                    return $box->room->name . ' ' . str_pad($box->room_box_number, 3, '0', STR_PAD_LEFT);
+                }),
             'breadcrumbs' => [
                 [
                     'text' => 'Boxes',
