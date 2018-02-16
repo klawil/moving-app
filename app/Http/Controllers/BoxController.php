@@ -90,11 +90,13 @@ class BoxController extends Controller
             'title' => $box->description,
             'breadcrumbs' => [
                 [
-                    'text' => 'Boxes',
-                    'url' => route('boxes.index'),
+                    'text' => $box->room->name,
+                    'url' => route('rooms.show', [
+                        'room' => $box->room,
+                    ]),
                 ],
                 [
-                    'text' => $box->description,
+                    'text' => $box->room->name . ' ' . $box->room_box_number,
                     'url' => route('boxes.show', [
                         'box' => $box,
                     ]),
