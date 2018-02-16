@@ -170,13 +170,13 @@ class BoxController extends Controller
     public function destroy(Box $box)
     {
         // Verify there are no boxes assigned
-        if ($box->boxes->count() > 0) {
+        if ($box->items->count() > 0) {
             return redirect()
                 ->route('boxes.show', [
                     'box' => $box,
                 ])
                 ->with([
-                    'error' => 'This box still has boxes. Delete boxes before deleting the boxes.',
+                    'error' => 'This box still has items. Delete items before deleting the box.',
                 ]);
         }
 
