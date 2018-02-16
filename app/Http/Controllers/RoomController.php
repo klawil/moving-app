@@ -23,7 +23,8 @@ class RoomController extends Controller
     public function index(Request $request)
     {
         return view('rooms.index', [
-            'rooms' => Room::all(),
+            'rooms' => Room::all()
+                ->sortBy('name'),
             'breadcrumbs' => [
                 [
                     'text' => 'Rooms',
