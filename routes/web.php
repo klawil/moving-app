@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()
+        ->route('rooms.index');
 });
+
+Route::resources([
+    'rooms' => 'RoomController',
+    'boxes' => 'BoxController',
+    'items' => 'ItemController',
+]);
