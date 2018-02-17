@@ -46,9 +46,39 @@ class ItemController extends Controller
      */
     public function create(Request $request)
     {
-        // @TODO: Make this work
-        return redirect()
-            ->route('items.index');
+        // Get the box
+        $box = \App\Box::find($request->input('box', null));
+
+        if ($box === null) {
+            return redirect()
+                ->route('boxes.index');
+        }
+
+        // Show the view
+        return view('items.create', [
+            'box' => $box,
+            'title' => $box->room->name . ' ' . $box->room_box_number . ' Add Items',
+            'breadcrumbs' => [
+                [
+                    'text' => $box->room->name,
+                    'url' => route('rooms.show', [
+                        'room' => $box->room,
+                    ]),
+                ],
+                [
+                    'text' => $box->room->name . ' ' . $box->room_box_number,
+                    'url' => route('boxes.show', [
+                        'box' => $box,
+                    ]),
+                ],
+                [
+                    'text' => 'Add Items',
+                    'url' => route('items.create', [
+                        'box' => $box,
+                    ]),
+                ],
+            ],
+        ]);
     }
 
     /**
