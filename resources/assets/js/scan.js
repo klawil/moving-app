@@ -28,13 +28,13 @@ window.scanner = (function()
      * The element to put the barcode value in
      * @type {DOMElement}
      */
-    var input = document.getElementById('input');
+    var input = document.getElementById('barcode-input');
 
     /**
      * The div to play the video in
      * @type {DOMElement}
      */
-    var playback_div = document.getElementById('stream-playback');
+    var playback_div = document.getElementById('stream-container');
 
     /**
      * Initialize Quagga
