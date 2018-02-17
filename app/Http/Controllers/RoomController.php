@@ -64,9 +64,7 @@ class RoomController extends Controller
 
         // Redirect to the room page
         return redirect()
-            ->route('rooms.show', [
-                'room' => $room,
-            ]);
+            ->route('rooms.index');
     }
 
     /**
